@@ -2,23 +2,30 @@
  <div class="row background">
    <div class="col-12">
         <div class="row justify-content-center">
-          <div class="col-6 box">
-            <div class="row justify-content-center">
-              <div class="col-12 label" style="padding-top: 10px;color: blue;">
-                <h4>CMS - Course Management System</h4>
+         
+            <div class="col-md-4 col-9  box">
+              <form [formGroup]="loginForm">
+              <div class="row justify-content-center">
+                <div class="col-12 label" style="padding-top: 10px;color: blue;">
+                  <h4>CMS - Course Management System</h4>
+                </div>
+                <div class="col-12" style="margin-top: 20px;">
+                  <input class="form-input" type="text" placeholder="Enter your name" formControlName="account">
+                </div>
+                <div class="col-12" style="margin-top: 20px;">
+                  <input class="form-input" type="password" placeholder="Enter your password" formControlName="password">
+                </div>
+                <div class="col-12" style="margin-top: 40px; margin-bottom: 20px;">
+                  <button (click)="checkLogin()">Đăng nhập</button>
+                </div>
+                <div class="col-12 mb-3 mt-2" *ngIf="isSuccess">
+                  <span style="color: red; font-size: smaller;">Invalid account or password !! Please try again !</span>
+                </div>
               </div>
-              <div class="col-12" style="margin-top: 20px;">
-                <input class="form-input" type="text" placeholder="Enter your name">
-              </div>
-              <div class="col-12" style="margin-top: 20px;">
-                <input class="form-input" type="password" placeholder="Enter your password">
-              </div>
-              <div class="col-12" style="margin-top: 40px; margin-bottom: 20px;">
-                <button routerLink="/index">Đăng nhập</button>
-              </div>
+            </form>
             </div>
-           
-          </div>
+       
+          
         </div>
    </div>
  </div>
