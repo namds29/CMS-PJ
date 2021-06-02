@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   checkLogin(): void{
     console.log(this.loginForm.value);
     
-    if(this.loginForm.controls.account.value === this.accLogin){
+    if(this.loginForm.controls.account.value === this.accLogin && this.loginForm.controls.password.value === this.passLogin){
       this.isSuccess = false;
       this.router.navigate(['/index']);
     }else{
