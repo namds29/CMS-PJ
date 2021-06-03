@@ -44,3 +44,21 @@
     }
   }
 }
+
+#list-course {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#list-course tr:nth-child(even){background-color: #f2f2f2;}
+
+#list-course tr:hover {background-color: #ddd;}
+
+#list-course th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}

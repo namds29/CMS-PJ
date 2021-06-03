@@ -11,17 +11,26 @@
     </div> -->
   </div>
   <div class="row content">
-    <div class="col-12 background" style="padding: 0;">
-      <img src="../../assets/background.jpg" alt="">
-      <div class="row label">
-        <div class="col-12">
-          <h1>Index Works</h1>
-        </div>
-        <div class="col-12">
-          <h2>COURSE MANAGEMENT SYSTEM</h2>
-        </div>
-      </div>
-
+    <h2>List Course</h2>
+    <div class="col-12 table-list">
+      <table id="list-course">
+        <thead>
+          <tr>
+            <th>Course</th>
+            <th>Start Date</th>
+            <th>Lecturer</th>
+            <th>Class</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let course of courses">
+          <tr>
+            <td>{{course.name}}</td>
+            <td>{{course.startDate | date}}</td>
+            <td>{{course.lecturer}}</td>
+            <td>{{course.classId}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
