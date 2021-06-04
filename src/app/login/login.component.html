@@ -16,7 +16,7 @@
                   <input class="form-input" type="password" placeholder="Enter your password" formControlName="password">
                 </div>
                 <div class="col-12" style="margin-top: 40px; margin-bottom: 20px;">
-                  <button (click)="checkLogin()">Đăng nhập</button>
+                  <button style="outline: none;" (click)="checkLogin()">Đăng nhập</button>
                 </div>
                 <div class="col-12 mb-3 mt-2" *ngIf="isSuccess">
                   <span style="color: red; font-size: smaller;">Invalid account or password !! Please try again !</span>

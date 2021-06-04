@@ -12,8 +12,7 @@ export class LoginComponent implements OnInit {
     account: [null,Validators.required],
     password: [null,Validators.required]
   });
-  accLogin= 'admin';
-  passLogin='admin';
+
   isSuccess = false;
   constructor(private fb: FormBuilder,private router: Router) { }
 
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit {
   checkLogin(): void{
     console.log(this.loginForm.value);
     
-    if(this.loginForm.controls.account.value === this.accLogin && this.loginForm.controls.password.value === this.passLogin){
+    if(this.loginForm.controls.account.value === 'admin' && this.loginForm.controls.password.value === 'admin'){
       this.isSuccess = false;
       this.router.navigate(['/index']);
     }else{
