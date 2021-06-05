@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Course } from '../course';
 import { COURSES } from '../mock-course';
 
 @Component({
@@ -14,6 +13,7 @@ export class ListCourseComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.courses);
   }
 
 }

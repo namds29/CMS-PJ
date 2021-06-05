@@ -18,7 +18,7 @@
 }
 
 .content {
-  margin-top: 87px;
+  margin-top: 72px;
   .background {
     img {
       width: 100%;
@@ -51,14 +51,50 @@
   width: 100%;
 }
 
-#list-course tr:nth-child(even){background-color: #f2f2f2;}
+#list-course tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-#list-course tr:hover {background-color: #ddd;}
+#list-course tr:hover {
+  background-color: #ddd;
+}
 
 #list-course th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
+}
+.sidebar {
+  width: 100%;
+  background-color: #daa520;
+  min-height: 100vh;
+}
+.listNameCourse {
+  line-height: 60px;
+  font-weight: bold;
+  color: brown;
+  text-align: center;
+  border-bottom: dashed;
+  font-size: 70%;
+}
+.card {
+  width: 18rem;
+  margin-right: 50px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  &-title {
+    border-bottom: 1px solid;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .enroll {
+    background-color: #adff2f;
+    color: orange;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
 }

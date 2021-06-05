@@ -4,4 +4,5 @@ export interface Course {
   startDate: number;
   lecturer: string;
   classId: string;
+  content: string;
 }

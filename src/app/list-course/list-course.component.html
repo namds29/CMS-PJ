@@ -11,7 +11,23 @@
     </div> -->
   </div>
   <div class="row content">
-    <h2>List Course</h2>
+    <div class="col-2 sidebar">
+      <div class="listNameCourse" *ngFor="let nameCourse of courses">
+        {{nameCourse.name}}
+      </div>
+    </div>
+    <div class="col-10 list-course">
+      <div class="row justify-content-center" style="padding-left: 20px; padding-top: 10px;"> 
+        <div class="col-md-4 card" *ngFor="let listCourse of courses" >
+          <h5 class="card-title">{{listCourse.name}} - {{listCourse.lecturer}}</h5>
+          <p class="card-text">{{listCourse.content}}</p><br>
+          <p>{{listCourse.startDate | date:'medium'}}</p>
+          <span class="enroll text-center">Enroll</span>
+        </div>
+      </div>
+      
+      </div>
+    <!-- <h2>List Course</h2>
     <div class="col-12 table-list">
       <table id="list-course">
         <thead>
@@ -31,6 +47,6 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </div> -->
   </div>
 </div>
