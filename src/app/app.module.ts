@@ -8,6 +8,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { IndexCourseComponent } from './index-course/index-course.component';
 import { ListCourseComponent } from './list-course/list-course.component';
 import { LoginComponent } from './login/login.component';
+import { AddCourseComponent } from './add-course/add-course.component';
+import { EditCourseComponent } from './edit-course/edit-course.component';
 
 @NgModule({
   declarations: [	
@@ -16,6 +18,8 @@ import { LoginComponent } from './login/login.component';
     HomepageComponent,
     IndexCourseComponent,
     ListCourseComponent,
+    AddCourseComponent,
+    EditCourseComponent,
     
    ],
   imports: [

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { COURSES } from '../mock-course';
+import { Course } from '../course';
 
 @Component({
   selector: 'app-list-course',
@@ -9,6 +10,7 @@ import { COURSES } from '../mock-course';
 export class ListCourseComponent implements OnInit {
 
   courses = COURSES;
+  selectedCourse!: Course;
   
   constructor() { }
 
@@ -16,4 +18,8 @@ export class ListCourseComponent implements OnInit {
     console.log(this.courses);
   }
 
+  onSelect(course: Course): void {
+    this.selectedCourse = course;
+
+  }
 }
