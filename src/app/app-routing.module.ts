@@ -4,6 +4,7 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { IndexCourseComponent } from './index-course/index-course.component';
 import { LoginComponent } from './login/login.component';
 import { ListCourseComponent } from './list-course/list-course.component';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'listcourse',
     component: ListCourseComponent
+  },
+  {
+    path: 'addcourse',
+    component: AddCourseComponent
   }
 ];
 

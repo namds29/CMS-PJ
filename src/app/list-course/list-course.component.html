@@ -1,52 +1,32 @@
 <div class="container-fluid">
   <div class="row header">
-    <div class="col-3 logo" style="cursor: pointer;" routerLink="">
+    <div class="col-6 logo" style="cursor: pointer;" routerLink="">
       <img src="../../assets/logo1.jpg" alt="">
     </div>
-    <!-- <div class="col-3 login">
-      <button [routerLink]="['/listcourse']" routerLinkActive="router-link-active">List Course</button>
+    <div class="col-6 addcourse">
+      <button routerLink="/addcourse">Add new course</button>
     </div>
-    <div class="col-6 login">
-      <button routerLink="/login"> Logout</button>
-    </div> -->
   </div>
   <div class="row content">
     <div class="col-2 sidebar">
       <div class="listNameCourse" *ngFor="let nameCourse of courses">
         {{nameCourse.name}}
       </div>
+
     </div>
     <div class="col-10 list-course">
-      <div class="row justify-content-center" style="padding-left: 20px; padding-top: 10px;"> 
-        <div class="col-md-4 card" *ngFor="let listCourse of courses" >
+      <div class="row justify-content-center" style="padding-left: 20px; padding-top: 10px;">
+        <div class="col-md-4 card" *ngFor="let listCourse of courses">
           <h5 class="card-title">{{listCourse.name}} - {{listCourse.lecturer}}</h5>
           <p class="card-text">{{listCourse.content}}</p><br>
-          <p>{{listCourse.startDate | date:'medium'}}</p>
+          <p>{{listCourse.startDate | date:'medium'}}</p><br>
+          <a [class.selected]="listCourse === selectedCourse"  (click)="onSelect(listCourse)">Detail</a>
           <span class="enroll text-center">Enroll</span>
         </div>
       </div>
-      
+      <div class="popupCourseDetail">
+        <app-edit-course [course]="selectedCourse"></app-edit-course>
       </div>
-    <!-- <h2>List Course</h2>
-    <div class="col-12 table-list">
-      <table id="list-course">
-        <thead>
-          <tr>
-            <th>Course</th>
-            <th>Start Date</th>
-            <th>Lecturer</th>
-            <th>Class</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let course of courses">
-          <tr>
-            <td>{{course.name}}</td>
-            <td>{{course.startDate | date}}</td>
-            <td>{{course.lecturer}}</td>
-            <td>{{course.classId}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
+    </div>
   </div>
 </div>
