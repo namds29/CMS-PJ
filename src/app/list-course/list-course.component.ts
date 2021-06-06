@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { COURSES } from '../mock-course';
 import { Course } from '../course';
+import { COURSES } from '../mock-course';
 
 @Component({
   selector: 'app-list-course',
@@ -11,7 +11,7 @@ export class ListCourseComponent implements OnInit {
 
   courses = COURSES;
   selectedCourse!: Course;
-  
+  isClicked = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -21,5 +21,11 @@ export class ListCourseComponent implements OnInit {
   onSelect(course: Course): void {
     this.selectedCourse = course;
 
+  }
+  displayDialog(): any{
+    this.isClicked = true;
+  }
+  closeDialog(): void{
+    this.isClicked = false;
   }
 }

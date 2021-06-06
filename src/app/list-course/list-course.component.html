@@ -17,16 +17,31 @@
     <div class="col-10 list-course">
       <div class="row justify-content-center" style="padding-left: 20px; padding-top: 10px;">
         <div class="col-md-4 card" *ngFor="let listCourse of courses">
-          <h5 class="card-title">{{listCourse.name}} - {{listCourse.lecturer}}</h5>
+          <div class="row">
+            <div class="col-6">
+              <h5 class="card-title">{{listCourse.name}} - {{listCourse.lecturer}}</h5>
+            </div>
+            <div class="col-6" style="padding: 0;">
+              <button class="update-btn" (click)="displayDialog()">Update</button>
+            </div>
+          </div>
           <p class="card-text">{{listCourse.content}}</p><br>
           <p>{{listCourse.startDate | date:'medium'}}</p><br>
           <a [class.selected]="listCourse === selectedCourse"  (click)="onSelect(listCourse)">Detail</a>
           <span class="enroll text-center">Enroll</span>
         </div>
       </div>
-      <div class="popupCourseDetail">
+      <!-- <div class="popupCourseDetail">
         <app-edit-course [course]="selectedCourse"></app-edit-course>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
+<p-dialog class="dialog" [(visible)]="isClicked" [style]="{width: '50vw'}" [baseZIndex]="10000">
+  <p style="float: right; margin-right: 10px; cursor: pointer;" (click)="closeDialog()" >X</p>
+  <div class="content">
+  <!-- content edit -->
+  </div>
+  
+  
+</p-dialog>
