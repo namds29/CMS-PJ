@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Course } from '../course';
 import { COURSES } from '../mock-course';
 
@@ -12,6 +12,7 @@ export class ListCourseComponent implements OnInit {
   courses = COURSES;
   selectedCourse!: Course;
   isClicked = false;
+  @Input() course?: Course;
   constructor() { }
 
   ngOnInit(): void {
