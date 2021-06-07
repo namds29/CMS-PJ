@@ -1,27 +1,54 @@
+
 <div class="container-fluid">
+  <form [formGroup]="searching">
   <div class="row header">
-    <div class="col-6 logo" style="cursor: pointer;" routerLink="">
+    <div class="col-2 logo" style="cursor: pointer;" routerLink="">
       <img src="../../assets/logo1.jpg" alt="">
     </div>
-    <div class="col-6 addcourse">
+   
+      <div class="col-7 text-center search" >
+        <input type="text" formControlName="name">
+        <button class="fa fa-search" (click)="searchByWord()"></button>
+      </div>
+    <div class="col-3 addcourse">
       <button routerLink="/addcourse">Add new course</button>
     </div>
   </div>
+</form>
   <div class="row content">
     <div class="col-2 sidebar">
-      <div class="listNameCourse" *ngFor="let nameCourse of courses">
-        {{nameCourse.name}}
+      <div style="cursor: pointer;" class="listNameCourse" *ngFor="let nameCourse of courses">
+       <span (click)="search(nameCourse.name)">{{nameCourse.name}}</span> 
       </div>
-
     </div>
-    <div class="col-10 list-course">
+    <!-- List Course -->
+    <div class="col-10 list-course" *ngIf="isList">
       <div class="row justify-content-center" style="padding-left: 20px; padding-top: 10px;">
         <div class="col-md-4 card" *ngFor="let listCourse of courses">
           <div class="row">
-            <div class="col-6">
+            <div class="col-7">
               <h5 class="card-title">{{listCourse.name}} - {{listCourse.lecturer}}</h5>
             </div>
-            <div class="col-6" style="padding: 0;">
+            <div class="col-5" style="padding: 0;">
+              <button class="update-btn" routerLink="/update/{{listCourse.id}}">Update</button>
+            </div>
+          </div>
+          <p class="card-text">{{listCourse.content}}</p><br>
+          <p>{{listCourse.startDate | date:'medium'}}</p><br>
+          <a [class.selected]="listCourse === selectedCourse" (click)="onSelect(listCourse)">Detail</a>
+          <span class="enroll text-center" routerLink="/course-detail/{{listCourse.id}}" >Enroll</span>
+        </div>
+      </div>
+    </div>
+    <!-- Search -->
+    <div *ngIf="isSearch" class="col-10 list-course">
+      <div class="row justify-content-center" style="padding-left: 20px; padding-top: 10px;">
+        <div class="col-md-4 card" *ngFor="let listCourse of filter ">
+          <div class="row">
+            <div class="col-7">
+              <h5 class="card-title">{{listCourse.name}} - {{listCourse.lecturer}}</h5>
+            </div>
+            <div class="col-5" style="padding: 0;">
               <button class="update-btn" routerLink="/coursedetail/{{listCourse.id}}">Update</button>
             </div>
           </div>
@@ -31,9 +58,6 @@
           <span class="enroll text-center">Enroll</span>
         </div>
       </div>
-      <!-- <div class="popupCourseDetail" id="popupDetail" #popupDetail>
-        <app-edit-course [course]="selectedCourse"></app-edit-course>
-      </div> -->
     </div>
   </div>
 </div>

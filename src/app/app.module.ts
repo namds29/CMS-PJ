@@ -7,6 +7,7 @@ import { DialogModule } from 'primeng/dialog';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DetailCourseComponent } from './detail-course/detail-course.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { IndexCourseComponent } from './index-course/index-course.component';
@@ -21,7 +22,7 @@ import { LoginComponent } from './login/login.component';
     ListCourseComponent,
     AddCourseComponent,
     EditCourseComponent,
-    
+    DetailCourseComponent
    ],
   imports: [
     BrowserModule,

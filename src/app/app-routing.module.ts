@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddCourseComponent } from './add-course/add-course.component';
+import { DetailCourseComponent } from './detail-course/detail-course.component';
+import { EditCourseComponent } from './edit-course/edit-course.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { IndexCourseComponent } from './index-course/index-course.component';
-import { LoginComponent } from './login/login.component';
 import { ListCourseComponent } from './list-course/list-course.component';
-import { AddCourseComponent } from './add-course/add-course.component';
-import { EditCourseComponent } from './edit-course/edit-course.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -29,9 +30,15 @@ const routes: Routes = [
     component: AddCourseComponent
   },
   {
-    path: 'coursedetail/:id',
+    path: 'update/:id',
     component: EditCourseComponent
-  }
+  },
+  
+    {
+      path: 'course-detail/:id',
+      component: DetailCourseComponent
+    },
+  
 ];
 
 @NgModule({

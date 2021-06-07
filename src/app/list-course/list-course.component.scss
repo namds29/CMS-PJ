@@ -78,10 +78,10 @@
 .listNameCourse {
   line-height: 60px;
   font-weight: bold;
-  color: brown;
+  color: darkred;
   text-align: center;
   border-bottom: dashed;
-  font-size: 70%;
+  font-size: 80%;
 }
 .card {
   width: 18rem;
@@ -100,6 +100,7 @@
     font-weight: bold;
     border-radius: 10px;
     margin-bottom: 10px;
+    cursor: pointer;
   }
 }
 
@@ -115,6 +116,20 @@ button {
   background-color: orange;
   width: 90px;
   float: right;
+}
+.search {
+  display: inline;
+  margin-top: 25px;
+  input {
+    border-radius: 10px;
+    outline: none;
+    padding-left: 7px;
+  }
+  button {
+    width: 40px;
+    margin-left: 5px;
+    border-radius: 7px;
+  }
 }
 // .dialog ::ng-deep {
 //   .p-dialog-content {
@@ -135,4 +150,3 @@ button {
 //     background-color: #e5e5e5;
 //   }
 // }
-

@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Course } from '../course';
 import { Location } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { COURSES } from '../mock-course';
 import { CourseService } from '../service/course.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { CourseService } from '../service/course.service';
 })
 export class EditCourseComponent implements OnInit {
   course: any;
-
+  nameCourse = COURSES
   constructor(
     private route: ActivatedRoute,
     private courseService: CourseService,
@@ -26,5 +26,6 @@ export class EditCourseComponent implements OnInit {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!);
     this.course = this.courseService.getCourseDetail(id);
   }
-
+  
+  
 }
