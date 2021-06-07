@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Course } from '../course';
 import { COURSES } from '../mock-course';
+import { DOCUMENT} from '@angular/common';
 
 @Component({
   selector: 'app-list-course',
@@ -12,6 +13,7 @@ export class ListCourseComponent implements OnInit {
   courses = COURSES;
   selectedCourse!: Course;
   isClicked = false;
+  popup = document.getElementById("popupDetail");
   @Input() course?: Course;
   constructor() { }
 
@@ -29,4 +31,5 @@ export class ListCourseComponent implements OnInit {
   closeDialog(): void{
     this.isClicked = false;
   }
+
 }
