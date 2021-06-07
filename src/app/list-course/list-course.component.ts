@@ -27,6 +27,6 @@ export class ListCourseComponent implements OnInit {
     this.isClicked = true;
   }
   closeDialog(): void{
-    this.isClicked = false;
+    this.isClicked = true;
   }
 }
