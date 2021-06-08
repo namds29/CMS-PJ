@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Course } from '../course';
 import { Location } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute,Router } from '@angular/router';
+import { COURSES } from '../mock-course';
 import { CourseService } from '../service/course.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Course } from '../course';
 
 @Component({
   selector: 'app-edit-course',

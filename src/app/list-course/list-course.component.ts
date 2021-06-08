@@ -1,4 +1,5 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Course } from '../course';
 import { COURSES } from '../mock-course';
 import { DOCUMENT} from '@angular/common';
@@ -14,13 +15,21 @@ export class ListCourseComponent implements OnInit {
   courses: Course[] = [];
   selectedCourse!: Course;
   isClicked = false;
+  filter: any;
   popup = document.getElementById("popupDetail");
+  isSearch = false;
+  isList = true;
+  searching = this.fb.group(
+    {
+      name: ['']
+    }
+  )
   //@Input() course?: Course;
-  constructor( private courseService: CourseService) { }
+  constructor(private fb: FormBuilder, private courseService: CourseService) { }
 
   ngOnInit(): void {
     this.courses = this.courseService.getCourses();
-    console.log(this.courses);
+   
   }
 
   onSelect(course: Course): void {
@@ -33,5 +42,15 @@ export class ListCourseComponent implements OnInit {
   closeDialog(): void{
     this.isClicked = false;
   }
-
+  search(name: any): void{
+   this.filter= this.courses.filter(item => item.name.includes(name));
+    console.log(this.courses.filter(item => item.name.includes(name)));
+    this.isSearch = true;
+    this.isList = false
+  }
+  searchByWord(): void{
+    this.filter= this.courses.filter(item => item.name.includes(this.searching.controls.name.value)); 
+    this.isSearch = true;
+    this.isList = false
+  }
 }

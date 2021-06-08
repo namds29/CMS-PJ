@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { Course } from '../course'
+import { Observable } from 'rxjs';
+import { Course } from '../course';
 import { COURSES } from '../mock-course';
 import { tap } from 'rxjs/operators';
 

@@ -12,8 +12,10 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { IndexCourseComponent } from './index-course/index-course.component';
 import { ListCourseComponent } from './list-course/list-course.component';
 import { LoginComponent } from './login/login.component';
+import { DetailCourseComponent } from './detail-course/detail-course.component';
+
 @NgModule({
-  declarations: [	
+  declarations: [			
     AppComponent,
     LoginComponent,
     HomepageComponent,
@@ -21,7 +23,7 @@ import { LoginComponent } from './login/login.component';
     ListCourseComponent,
     AddCourseComponent,
     EditCourseComponent,
-    
+      DetailCourseComponent
    ],
   imports: [
     BrowserModule,
