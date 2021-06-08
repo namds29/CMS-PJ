@@ -7,12 +7,13 @@ import { DialogModule } from 'primeng/dialog';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DetailCourseComponent } from './detail-course/detail-course.component';
 import { EditCourseComponent } from './edit-course/edit-course.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { IndexCourseComponent } from './index-course/index-course.component';
 import { ListCourseComponent } from './list-course/list-course.component';
 import { LoginComponent } from './login/login.component';
-import { DetailCourseComponent } from './detail-course/detail-course.component';
+
 
 @NgModule({
   declarations: [			
@@ -23,7 +24,7 @@ import { DetailCourseComponent } from './detail-course/detail-course.component';
     ListCourseComponent,
     AddCourseComponent,
     EditCourseComponent,
-      DetailCourseComponent
+    DetailCourseComponent
    ],
   imports: [
     BrowserModule,

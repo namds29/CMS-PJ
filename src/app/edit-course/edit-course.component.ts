@@ -1,10 +1,8 @@
-import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute,Router } from '@angular/router';
-import { COURSES } from '../mock-course';
-import { CourseService } from '../service/course.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from '../course';
+import { CourseService } from '../service/course.service';
 
 @Component({
   selector: 'app-edit-course',
@@ -15,8 +13,8 @@ export class EditCourseComponent implements OnInit {
   course: any;
 
   editForm = this.fb.group({
-    id: [null, Validators.required],
-    name: [null, Validators.required],
+    id: ['', Validators.required],
+    name: ['', Validators.required],
     startDate: [null, Validators.required],
     lecturer: [null, Validators.required],
     classId: [null, Validators.required],
@@ -34,11 +32,20 @@ export class EditCourseComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCourse();
+    console.log(this.course.name);
+    console.log();
+  
   }
 
   getCourse(): void {
     const id = this.route.snapshot.paramMap.get('id')!;
     this.course = this.courseService.getCourseDetail(id);
+   
+    this.editForm.controls.name.setValue(this.course.name);
+    this.editForm.controls.startDate.setValue(this.course.startDate);
+    this.editForm.controls.lecturer.setValue(this.course.lecturer);
+    this.editForm.controls.classId.setValue(this.course.classId);
+    this.editForm.controls.content.setValue(this.course.content);
   }
 
   editCourse(): void {
@@ -52,8 +59,14 @@ export class EditCourseComponent implements OnInit {
                                     this.editForm.controls.classId.value,
                                     this.editForm.controls.content.value
     );
-    console.log("editcomponent"+" ",editedCourse);
+    // this.editForm.controls.name.setValue(this.course.name);
+    
+    // console.log(this.course);
+   console.log( this.courseService.editCourse(editedCourse));
     this.courseService.editCourse(editedCourse);
+    // console.log(this.course);
+
+    
     this.router.navigate(['/listcourse']);
   }
 }
