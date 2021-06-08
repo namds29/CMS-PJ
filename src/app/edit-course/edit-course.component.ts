@@ -1,8 +1,10 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 import { COURSES } from '../mock-course';
 import { CourseService } from '../service/course.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Course } from '../course';
 
 @Component({
   selector: 'app-edit-course',
@@ -11,11 +13,23 @@ import { CourseService } from '../service/course.service';
 })
 export class EditCourseComponent implements OnInit {
   course: any;
-  nameCourse = COURSES
+
+  editForm = this.fb.group({
+    id: [null, Validators.required],
+    name: [null, Validators.required],
+    startDate: [null, Validators.required],
+    lecturer: [null, Validators.required],
+    classId: [null, Validators.required],
+    content: [null, Validators.required]
+  });
+
+  //editedCourse!: Course;
+  // id = parseInt(this.route.snapshot.paramMap.get('id')!);
   constructor(
     private route: ActivatedRoute,
     private courseService: CourseService,
-    private location: Location
+    private router: Router,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
@@ -23,9 +37,23 @@ export class EditCourseComponent implements OnInit {
   }
 
   getCourse(): void {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!);
+    const id = this.route.snapshot.paramMap.get('id')!;
     this.course = this.courseService.getCourseDetail(id);
   }
-  
-  
+
+  editCourse(): void {
+    const id = this.route.snapshot.paramMap.get('id')!;
+    console.log("selected id ", id);
+    let editedCourse = new Course(
+                                    id,
+                                    this.editForm.controls.name.value,
+                                    this.editForm.controls.startDate.value,
+                                    this.editForm.controls.lecturer.value,
+                                    this.editForm.controls.classId.value,
+                                    this.editForm.controls.content.value
+    );
+    console.log("editcomponent"+" ",editedCourse);
+    this.courseService.editCourse(editedCourse);
+    this.router.navigate(['/listcourse']);
+  }
 }

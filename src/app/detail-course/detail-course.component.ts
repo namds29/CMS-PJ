@@ -19,7 +19,7 @@ export class DetailCourseComponent implements OnInit {
     this.getCourse();
   }
   getCourse(): void {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!);
+    const id = this.route.snapshot.paramMap.get('id')!;
     this.course = this.courseService.getCourseDetail(id);
   }
   

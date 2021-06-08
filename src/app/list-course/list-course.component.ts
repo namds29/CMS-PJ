@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Course } from '../course';
 import { COURSES } from '../mock-course';
+import { DOCUMENT} from '@angular/common';
+import { CourseService } from '../service/course.service';
 
 @Component({
   selector: 'app-list-course',
@@ -10,7 +12,7 @@ import { COURSES } from '../mock-course';
 })
 export class ListCourseComponent implements OnInit {
 
-  courses = COURSES;
+  courses: Course[] = [];
   selectedCourse!: Course;
   isClicked = false;
   filter: any;
@@ -22,11 +24,11 @@ export class ListCourseComponent implements OnInit {
       name: ['']
     }
   )
-  @Input() course?: Course;
-  constructor(private fb: FormBuilder) { }
+  //@Input() course?: Course;
+  constructor(private fb: FormBuilder, private courseService: CourseService) { }
 
   ngOnInit(): void {
-  
+    this.courses = this.courseService.getCourses();
    
   }
 

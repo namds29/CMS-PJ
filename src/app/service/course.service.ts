@@ -2,17 +2,23 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from '../course';
 import { COURSES } from '../mock-course';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CourseService {
 
-  courses = COURSES;
+  courses: Course[] = [];
   selectedCourse: any;
   constructor() { }
 
-  getCourseDetail(id: number): Observable<Course> {
+  getCourses(): Course[] {
+    //const courses = of(COURSES);
+    return this.courses;
+  }
+
+  getCourseDetail(id: string): Observable<Course> {
     this.courses.forEach(course => {
       if (course.id === id) {
         this.selectedCourse = course;
@@ -23,5 +29,18 @@ export class CourseService {
     return this.selectedCourse;
   }
 
+  addCourse(course: Course) {
+    this.courses.push(course);
+    console.log("new list: ", this.courses);
+  }
 
+  editCourse(editedCourse:Course) {
+    this.courses.forEach(course => {
+      if (course.id === editedCourse.id) {
+        course = editedCourse;
+        console.log("Service edit: ",course);
+      }
+    });
+    console.log("updated: ",this.courses);
+  }
 }
