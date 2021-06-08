@@ -36,12 +36,12 @@ export class EditCourseComponent implements OnInit {
   }
 
   getCourse(): void {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!);
+    const id = this.route.snapshot.paramMap.get('id')!;
     this.course = this.courseService.getCourseDetail(id);
   }
 
   editCourse(): void {
-    const id = parseInt(this.route.snapshot.paramMap.get('id')!);
+    const id = this.route.snapshot.paramMap.get('id')!;
     console.log("selected id ", id);
     let editedCourse = new Course(
                                     id,

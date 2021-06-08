@@ -2,6 +2,7 @@ import { Component, Inject, Input, OnInit } from '@angular/core';
 import { Course } from '../course';
 import { COURSES } from '../mock-course';
 import { DOCUMENT} from '@angular/common';
+import { CourseService } from '../service/course.service';
 
 @Component({
   selector: 'app-list-course',
@@ -10,14 +11,15 @@ import { DOCUMENT} from '@angular/common';
 })
 export class ListCourseComponent implements OnInit {
 
-  courses = COURSES;
+  courses: Course[] = [];
   selectedCourse!: Course;
   isClicked = false;
   popup = document.getElementById("popupDetail");
-  @Input() course?: Course;
-  constructor() { }
+  //@Input() course?: Course;
+  constructor( private courseService: CourseService) { }
 
   ngOnInit(): void {
+    this.courses = this.courseService.getCourses();
     console.log(this.courses);
   }
 

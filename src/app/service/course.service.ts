@@ -9,16 +9,16 @@ import { tap } from 'rxjs/operators';
 })
 export class CourseService {
 
-  courses = COURSES;
+  courses: Course[] = [];
   selectedCourse: any;
   constructor() { }
 
-  getCourses(): Observable<Course[]> {
-    const courses = of(COURSES);
-    return courses;
+  getCourses(): Course[] {
+    //const courses = of(COURSES);
+    return this.courses;
   }
 
-  getCourseDetail(id: number): Observable<Course> {
+  getCourseDetail(id: string): Observable<Course> {
     this.courses.forEach(course => {
       if (course.id === id) {
         this.selectedCourse = course;
@@ -31,6 +31,7 @@ export class CourseService {
 
   addCourse(course: Course) {
     this.courses.push(course);
+    console.log("new list: ", this.courses);
   }
 
   editCourse(editedCourse:Course) {
@@ -39,6 +40,7 @@ export class CourseService {
         course = editedCourse;
         console.log("Service edit: ",course);
       }
-    })
+    });
+    console.log("updated: ",this.courses);
   }
 }
