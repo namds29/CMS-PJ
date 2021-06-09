@@ -1,24 +1,23 @@
-
 <div class="container-fluid">
   <form [formGroup]="searching">
-  <div class="row header">
-    <div class="col-2 logo" style="cursor: pointer;" routerLink="">
-      <img src="../../assets/logo1.jpg" alt="">
-    </div>
-   
-      <div class="col-7 text-center search" >
+    <div class="row header">
+      <div class="col-2 logo" style="cursor: pointer;" routerLink="">
+        <img src="../../assets/logo1.jpg" alt="">
+      </div>
+
+      <div class="col-7 text-center search">
         <input type="text" formControlName="name">
         <button class="fa fa-search" (click)="searchByWord()"></button>
       </div>
-    <div class="col-3 addcourse">
-      <button routerLink="/addcourse">Add new course</button>
+      <div class="col-3 addcourse">
+        <button routerLink="/addcourse">Add new course</button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
   <div class="row content">
     <div class="col-2 sidebar">
       <div style="cursor: pointer;" class="listNameCourse" *ngFor="let nameCourse of courses">
-       <span (click)="search(nameCourse.name)">{{nameCourse.name}}</span> 
+        <span (click)="search(nameCourse.name)">{{nameCourse.name}}</span>
       </div>
     </div>
     <!-- List Course -->
@@ -36,7 +35,8 @@
           <p class="card-text">{{listCourse.content}}</p><br>
           <p>{{listCourse.startDate | date:'medium'}}</p><br>
           <a [class.selected]="listCourse === selectedCourse" (click)="onSelect(listCourse)">Detail</a>
-          <span class="enroll text-center" routerLink="/course-detail/{{listCourse.id}}" >Enroll</span>
+          <a title="Delete" (click)="open(content,listCourse.id)" href="javascript:void(0)">Delete</a>
+          <span class="enroll text-center" routerLink="/course-detail/{{listCourse.id}}">Enroll</span>
         </div>
       </div>
     </div>
@@ -61,3 +61,19 @@
     </div>
   </div>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Are you sure to delete this?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="d('Cross click')">Cancel</button>
+    <button type="button" class="btn btn-outline-dark" (click)="c('yes')">Yes</button>
+  </div>
+</ng-template>

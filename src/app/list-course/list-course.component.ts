@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Course } from '../course';
 import { CourseService } from '../service/course.service';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-course',
@@ -21,9 +22,10 @@ export class ListCourseComponent implements OnInit {
     {
       name: ['']
     }
-  )
+  );
+  closeResult!: string;
   //@Input() course?: Course;
-  constructor(private fb: FormBuilder, private courseService: CourseService) { }
+  constructor(private fb: FormBuilder, private courseService: CourseService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.courses = this.courseService.getCourses();
@@ -50,5 +52,30 @@ export class ListCourseComponent implements OnInit {
     this.filter= this.courses.filter(item => item.name.includes(this.searching.controls.name.value)); 
     this.isSearch = true;
     this.isList = false
+  }
+
+  open(content:any, courseId:any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+      if (result === 'yes') {
+        this.deleteCourse(courseId);
+      }
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  deleteCourse(id:any) {
+    this.courses = this.courses.filter(x => x.id !== id);
   }
 }
