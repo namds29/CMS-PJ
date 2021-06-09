@@ -33,7 +33,6 @@ export class EditCourseComponent implements OnInit {
   ngOnInit(): void {
     this.getCourse();
     console.log(this.course.name);
-    console.log();
   
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { COURSES } from '../mock-course';
+import { Course } from '../course';
 import { CourseService } from '../service/course.service';
 @Component({
   selector: 'app-detail-course',
@@ -9,7 +9,7 @@ import { CourseService } from '../service/course.service';
 })
 export class DetailCourseComponent implements OnInit {
   course: any;
-  nameCourse = COURSES;
+  nameCourse:Course[]=[];
   
   constructor(private route: ActivatedRoute,
     private courseService: CourseService,
@@ -17,6 +17,8 @@ export class DetailCourseComponent implements OnInit {
 
   ngOnInit() {
     this.getCourse();
+    this.nameCourse = this.courseService.getCourses();
+    
   }
   getCourse(): void {
     const id = this.route.snapshot.paramMap.get('id')!;

@@ -1,11 +1,9 @@
-<p>
-  detail-course works!
-</p>
+
 <div class="container-fluid">
   <div class="row header">
     <div class="col-1">
       <button type="button" class="nav-collapse" data-toggle="collapse" data-target="#demo">-</button>
-    
+
     </div>
     <div class="col-5 logo" style="cursor: pointer;" routerLink="">
       <img src="../../assets/logo1.jpg" alt="">
@@ -14,19 +12,30 @@
       <button routerLink="/addcourse">Add new course</button>
     </div>
   </div>
+
   <div class="body-content" style="padding-top: 70px;">
-    <div  class="row">
-      <div id="demo"  class="col-2 nav-content collapse">
-        <div  class="name-course" *ngFor="let course of nameCourse">
+    <div class="row justify-content-center" >
+      <div id="demo" class="col-2 nav-content collapse">
+        <div class="name-course" *ngFor="let course of nameCourse">
           {{course.name}}
         </div>
       </div>
-      <div class="col-10 detail-course">
-        <div *ngIf="course">
-          {{course.name}} - {{course.lecturer}}
+     
+        <div class="col-10 detail-course" style=" width: 100%;">
+          <div class="card" style="box-shadow: 5px 10px 18px #888888; margin: 30px;" *ngIf="course">
+            <div class="row justify-content-center">
+              <div class="col-12" style="padding: 20px;">
+                <span class="title">{{course.name}} - {{course.lecturer}}</span>
+              </div>
+              <div class="col-12 text-right date">
+               <span > {{course.startDate | date:'medium'}}</span>
+              </div>
+              <div class="col-12 content">
+              {{course.content}} 
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
     </div>
-   
   </div>
 </div>
