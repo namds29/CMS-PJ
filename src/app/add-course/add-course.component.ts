@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Course } from '../course';
 import { CourseService } from '../service/course.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-course',
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-course.component.scss']
 })
 export class AddCourseComponent implements OnInit {
-
+  invalid = false
   addForm = this.fb.group({
     id: [null, Validators.required],
     name: [null, Validators.required],
@@ -31,16 +31,21 @@ export class AddCourseComponent implements OnInit {
   submitted = false;
 
   addCourse(): void { 
-    let newCourse = new Course(
-      this.addForm.controls.id.value,
-      this.addForm.controls.name.value,
-      this.addForm.controls.startDate.value,
-      this.addForm.controls.lecturer.value,
-      this.addForm.controls.classId.value,
-      this.addForm.controls.content.value
-    );
-    console.log("add component new course: ",newCourse);
-    this.courseService.addCourse(newCourse);
-    this.router.navigate(['/listcourse']);
+    if(this.addForm.valid){
+      let newCourse = new Course(
+        this.addForm.controls.id.value,
+        this.addForm.controls.name.value,
+        this.addForm.controls.startDate.value,
+        this.addForm.controls.lecturer.value,
+        this.addForm.controls.classId.value,
+        this.addForm.controls.content.value
+      );
+      console.log("add component new course: ",newCourse);
+      this.courseService.addCourse(newCourse);
+      this.router.navigate(['/listcourse']);
+    }else{
+      this.invalid = true
+    }
+
   }
 }

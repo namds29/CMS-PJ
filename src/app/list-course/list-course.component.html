@@ -22,11 +22,12 @@
     </div>
     <!-- List Course -->
     <div class="col-10 list-course" *ngIf="isList">
-      <div class="row justify-content-center" style="padding-left: 20px; padding-top: 10px;">
+      <div class="row justify-content-center" style="padding-left: 20px; padding-top: 20px;">
         <div class="col-md-4 card" *ngFor="let listCourse of courses">
           <div class="row">
             <div class="col-7">
               <h5 class="card-title">{{listCourse.name}} - {{listCourse.lecturer}}</h5>
+              <button class="close" (click)="open(content,listCourse.id)" href="javascript:void(0)">x</button>
             </div>
             <div class="col-5" style="padding: 0;">
               <button class="update-btn" routerLink="/update/{{listCourse.id}}">Update</button>
@@ -34,8 +35,6 @@
           </div>
           <p class="card-text">{{listCourse.content}}</p><br>
           <p>{{listCourse.startDate | date:'medium'}}</p><br>
-          <a [class.selected]="listCourse === selectedCourse" (click)="onSelect(listCourse)">Detail</a>
-          <a title="Delete" (click)="open(content,listCourse.id)" href="javascript:void(0)">Delete</a>
           <span class="enroll text-center" routerLink="/course-detail/{{listCourse.id}}">Enroll</span>
         </div>
       </div>
@@ -49,13 +48,12 @@
               <h5 class="card-title">{{listCourse.name}} - {{listCourse.lecturer}}</h5>
             </div>
             <div class="col-5" style="padding: 0;">
-              <button class="update-btn" routerLink="/coursedetail/{{listCourse.id}}">Update</button>
+              <button class="update-btn" routerLink="/update/{{listCourse.id}}">Update</button>
             </div>
           </div>
           <p class="card-text">{{listCourse.content}}</p><br>
           <p>{{listCourse.startDate | date:'medium'}}</p><br>
-          <a [class.selected]="listCourse === selectedCourse" (click)="onSelect(listCourse)">Detail</a>
-          <span class="enroll text-center">Enroll</span>
+          <span class="enroll text-center" routerLink="/course-detail/{{listCourse.id}}">Enroll</span>
         </div>
       </div>
     </div>
@@ -65,9 +63,6 @@
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Confirmation</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">×</span>
-    </button>
   </div>
   <div class="modal-body">
     <p>Are you sure to delete this?</p>

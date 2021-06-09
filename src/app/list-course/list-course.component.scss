@@ -48,7 +48,17 @@
     }
   }
 }
-
+.close {
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  padding-bottom: 30px;
+  position: absolute;
+  top: -14px;
+  left: -17px;
+  outline: none;
+  border: none;
+}
 #list-course {
   font-family: Arial, Helvetica, sans-serif;
   border-collapse: collapse;

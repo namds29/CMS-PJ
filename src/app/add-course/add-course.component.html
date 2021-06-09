@@ -60,10 +60,11 @@
             <div class="form-group">
               <label for="Content">Content</label>
               <textarea class="form-control" rows="4" cols="50" name="content" formControlName="content"></textarea>
+              <span *ngIf="invalid" style="color: red; font-weight: bold;">*Please input all information</span>
             </div>
 
             <button type="button" class="btn btn-primary" [routerLink]="['/listcourse']"
-              routerLinkActive="router-link-active">Cancel</button>
+              routerLinkActive="router-link-active" style="margin-left: 30px;">Cancel</button>
             <button type="button" class="btn btn-success" (click)="addCourse()">Save</button>
           </form>
         </div>

@@ -8,8 +8,7 @@
   <div class="row background">
     <div class="col-12">
       <div class="row justify-content-center">
-        <div class=" col-9 box" *ngIf="course">
-        
+        <div class=" col-9 box" *ngIf="course">    
             <div class="col-12 label" style="padding-top: 10px;color: blue;">
               <h4>Edit Course</h4>
             </div>
@@ -37,7 +36,6 @@
               </div>
             </div>
 
-          
             <div class="form-group">
               <label for="ClassID">Class ID</label>
               <input type="text" class="form-control" id="classid" required name="classid" formControlName="classId">
@@ -45,20 +43,16 @@
                 ClassID is required
               </div>
             </div>
-
             <!-- Content -->
             <div class="form-group">
               <label for="Content">Content</label>
               <textarea class="form-control" rows="4" cols="50" name="content" formControlName="content"></textarea>
             </div>
-
             <button type="button" class="btn btn-primary" [routerLink]="['/listcourse']"
               routerLinkActive="router-link-active">Cancel</button>
             <button type="button" class="btn btn-success" (click)="editCourse()">Save</button>
-         
         </div>
       </div>
-
     </div>
   </div>
 </form>
