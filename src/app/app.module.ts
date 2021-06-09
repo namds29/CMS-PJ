@@ -14,6 +14,8 @@ import { IndexCourseComponent } from './index-course/index-course.component';
 import { ListCourseComponent } from './list-course/list-course.component';
 import { LoginComponent } from './login/login.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [			
@@ -33,7 +35,8 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     HttpClientModule,
     DialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
