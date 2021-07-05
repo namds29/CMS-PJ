@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DialogModule } from 'primeng/dialog';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,8 +14,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { IndexCourseComponent } from './index-course/index-course.component';
 import { ListCourseComponent } from './list-course/list-course.component';
 import { LoginComponent } from './login/login.component';
+import { CourseService } from './service/course.service';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserAnimationsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [CourseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

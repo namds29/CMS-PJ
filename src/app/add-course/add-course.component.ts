@@ -19,7 +19,8 @@ export class AddCourseComponent implements OnInit {
     classId: [null, Validators.required],
     content: [null, Validators.required]
   })
-
+  courses : Course[] = [];
+  
   constructor(
     private courseService: CourseService,
     private fb: FormBuilder,
@@ -27,11 +28,14 @@ export class AddCourseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
+    this.courses = this.courseService.getCourses();
+    console.log(this.courses);
   }
   submitted = false;
 
   addCourse(): void { 
-    if(this.addForm.valid){
+    if(this.addForm.invalid){
       let newCourse = new Course(
         this.addForm.controls.id.value,
         this.addForm.controls.name.value,

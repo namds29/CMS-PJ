@@ -1,8 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Course } from '../course';
 import { CourseService } from '../service/course.service';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-list-course',
@@ -28,14 +28,14 @@ export class ListCourseComponent implements OnInit {
   constructor(private fb: FormBuilder, private courseService: CourseService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    
     this.courses = this.courseService.getCourses();
-  
+    console.log(this.courses);
     
   }
 
   onSelect(course: Course): void {
     this.selectedCourse = course;
-
   }
   displayDialog(): any{
     this.isClicked = true;

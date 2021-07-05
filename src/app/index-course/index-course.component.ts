@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Course } from '../course';
+import { CourseService } from '../service/course.service';
 
 @Component({
   selector: 'app-index-course',
@@ -6,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./index-course.component.scss']
 })
 export class IndexCourseComponent implements OnInit {
-
-  constructor() { }
+  courses : Course[] = [];
+  constructor(private courseService: CourseService) { }
 
   ngOnInit() {
+    this.courses = this.courseService.getCourses();
   }
 
 }

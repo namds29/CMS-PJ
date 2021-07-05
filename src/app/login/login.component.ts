@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Course } from '../course';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
     account: [null,Validators.required],
     password: [null,Validators.required]
   });
-
+  courses: Course[] = [];
   isSuccess = false;
   constructor(private fb: FormBuilder,private router: Router) { }
 
